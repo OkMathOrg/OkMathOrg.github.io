@@ -3,42 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OkMath | Geometric Cosmology Research</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        header { border-bottom: 1px solid #eaecef; padding-bottom: 20px; margin-bottom: 30px; }
-        h1 { font-size: 2.5rem; margin-bottom: 5px; color: #0366d6; }
-        .subtitle { font-size: 1.2rem; color: #586069; }
-        .paper-card { border: 1px solid #e1e4e8; border-radius: 6px; padding: 20px; margin-top: 30px; background: #f6f8fa; }
-        .btn { display: inline-block; background: #2ea44f; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-top: 15px; }
-        .btn-secondary { background: #f6f8fa; color: #24292e; border: 1px solid #d1d5da; margin-left: 10px; }
-        a { color: #0366d6; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-    </style>
+    <title>OkMath Organization. Geometric Cosmology Research</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <style>
+        :root {
+            /* Light Theme */
+            --bg-color: #ffffff;
+            --card-bg: #F6F8FA;
+            --text-main: #111111;
+            --text-muted: #57606a;
+            
+            --accent: #000000;
+            --accent-hover: #24292f; /* Darker black for hover */
+            
+            --border: #d0d7de;
+            --border-hover: #8c959f; /* Softer gray for secondary hover */
+            
+            --btn-text: #ffffff;
+            --icon-color: #000000;
+            --hover-bg: #f3f4f6;
+            --link-hover: #000000;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme */
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            
+            --accent: #ffffff;
+            --accent-hover: #e6e6e6;
+            
+            --border: #30363d;
+            --border-hover: #8b949e; /* Softer gray for secondary hover */
+            
+            --btn-text: #0d1117;
+            --icon-color: #ffffff;
+            --hover-bg: #21262d;
+            --link-hover: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 780px;
+            text-align: left;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.3s ease;
+        }
+
+        .logo-link {
+            display: block;
+            line-height: 0;
+            text-decoration: none;
+            border: none;
+        }
+
+        .logo-svg {
+            width: 160px;
+            height: auto;
+            display: block;
+        }
+        
+        .logo-svg path {
+            fill: var(--icon-color);
+            transition: fill 0.3s ease;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+            color: var(--icon-color);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .theme-icon {
+            fill: var(--icon-color);
+            width: 24px;
+            height: 24px;
+            display: none;
+        }
+
+        html[data-theme="light"] .icon-moon { display: block; }
+        html[data-theme="dark"] .icon-sun { display: block; }
+        html:not([data-theme]) .icon-moon { display: block; }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 2.5rem;
+            max-width: 100%;
+        }
+
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .abstract-box {
+            margin: 15px 0;
+            color: var(--text-main);
+        }
+
+        .meta-info {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+
+        .doi-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-muted);
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .doi-link:hover {
+            color: var(--link-hover);
+            border-bottom-color: var(--link-hover);
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--btn-text);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--border-hover);
+            background: var(--hover-bg);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            transition: border-color 0.3s ease;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>OkMath Organization</h1>
-        <div class="subtitle">Independent Research Initiative for Geometric Cosmology</div>
-    </header>
 
-    <p><strong>OkMath</strong> is a research organization dedicated to solving the initial singularity problem through rigorous mathematical frameworks. We explore the intersection of hyperbolic geometry, general relativity, and quantum foundations.</p>
+    <div class="main-container">
+        <header>
+            <a href="/" class="logo-link" aria-label="OkMath Organization Home">
+                <svg class="logo-svg" width="180" height="54" viewBox="0 0 180 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M176.606 28.2736C176.606 27.0539 176.272 26.0998 175.603 25.4112C174.934 24.703 174.009 24.3489 172.829 24.3489C171.432 24.3686 170.331 24.8604 169.524 25.8244C168.737 26.7883 168.344 27.9884 168.344 29.4245H167.399C167.399 27.4769 167.675 25.9129 168.226 24.7325C168.777 23.5522 169.554 22.6964 170.557 22.1653C171.58 21.6144 172.78 21.339 174.157 21.339C175.377 21.339 176.419 21.5849 177.285 22.0767C178.17 22.5685 178.839 23.2669 179.292 24.1719C179.764 25.0571 180 26.1293 180 27.3883V37.1263H176.606V28.2736ZM164.95 15.2307H168.344V37.1263H164.95V15.2307Z"/>
+                    <path d="M156.771 32.1688C156.771 33.0147 156.918 33.595 157.213 33.9098C157.508 34.2049 157.921 34.3524 158.453 34.3524C158.807 34.3524 159.171 34.2934 159.544 34.1754C159.938 34.0573 160.361 33.8803 160.813 33.6442L161.669 36.0935C161.059 36.4672 160.43 36.7623 159.78 36.9787C159.131 37.1755 158.472 37.2738 157.803 37.2738C157.016 37.2738 156.289 37.1263 155.62 36.8312C154.951 36.5164 154.41 36.0246 153.997 35.3557C153.603 34.6869 153.407 33.8213 153.407 32.7589V17.7389H156.771V32.1688ZM151.193 22.0177H161.403V24.4374H151.193V22.0177Z"/>
+                    <path d="M140.63 30.1327C139.529 30.1327 138.712 30.2999 138.181 30.6343C137.65 30.9687 137.384 31.5196 137.384 32.2868C137.384 33.0147 137.65 33.595 138.181 34.0278C138.732 34.4606 139.479 34.677 140.424 34.677C141.27 34.677 142.027 34.5295 142.696 34.2344C143.365 33.9393 143.896 33.5459 144.289 33.054C144.683 32.5426 144.889 31.972 144.909 31.3425L145.558 34.2049C145.066 35.2279 144.319 35.9951 143.316 36.5066C142.312 37.0181 141.112 37.2738 139.715 37.2738C138.594 37.2738 137.62 37.0574 136.794 36.6246C135.968 36.1918 135.328 35.6115 134.876 34.8836C134.424 34.136 134.197 33.3098 134.197 32.4048C134.197 30.9884 134.709 29.8572 135.732 29.0113C136.774 28.1654 138.24 27.7326 140.129 27.7129H145.322V30.1327H140.63ZM144.88 27.1818C144.88 26.1588 144.565 25.362 143.935 24.7915C143.306 24.221 142.371 23.9358 141.132 23.9358C140.384 23.9358 139.617 24.0735 138.83 24.3489C138.063 24.6243 137.286 25.0276 136.499 25.5588L135.112 23.3751C135.84 22.9226 136.528 22.5489 137.178 22.2538C137.827 21.9587 138.515 21.7324 139.243 21.5751C139.991 21.4177 140.866 21.339 141.87 21.339C143.896 21.339 145.45 21.8308 146.532 22.8144C147.634 23.7784 148.194 25.1161 148.214 26.8277L148.244 37.1263H144.909L144.88 27.1818Z"/>
+                    <path d="M107.951 16.47H111.994L119.135 30.4867L126.217 16.47H130.26V37.1262H127.043L127.014 21.3389L120.227 34.9721H118.014L111.168 21.3389V37.1262H107.951V16.47Z"/>
+                    <path d="M90.3428 15.2307H93.7363V37.1263H90.3428V15.2307ZM100.671 21.457H104.566L93.4707 32.9655V28.9228L100.671 21.457ZM98.4282 27.0342L105.009 37.1263H100.996L95.92 29.0704L98.4282 27.0342Z"/>
+                    <path d="M75.7486 16.2634C77.2831 16.2634 78.7093 16.529 80.0274 17.0602C81.3651 17.5913 82.5258 18.3389 83.5095 19.3028C84.5128 20.2668 85.2898 21.3881 85.8407 22.6669C86.4112 23.9259 86.6964 25.2932 86.6964 26.7686C86.6964 28.2441 86.4112 29.631 85.8407 30.9294C85.2898 32.2081 84.5128 33.3294 83.5095 34.2934C82.5258 35.2574 81.3651 36.0148 80.0274 36.5656C78.7093 37.0967 77.2831 37.3623 75.7486 37.3623C74.2141 37.3623 72.778 37.0967 71.4403 36.5656C70.1222 36.0148 68.9615 35.2574 67.9582 34.2934C66.9746 33.3294 66.1975 32.2081 65.627 30.9294C65.0762 29.631 64.8008 28.2441 64.8008 26.7686C64.8008 25.2932 65.0762 23.9161 65.627 22.6374C66.1975 21.3586 66.9746 20.2471 67.9582 19.3028C68.9615 18.3389 70.1222 17.5913 71.4403 17.0602C72.778 16.529 74.2141 16.2634 75.7486 16.2634ZM75.7781 19.2143C74.7551 19.2143 73.7912 19.411 72.8862 19.8045C72.001 20.1783 71.2141 20.7094 70.5255 21.398C69.837 22.0865 69.296 22.8931 68.9025 23.8177C68.5287 24.7227 68.3419 25.7063 68.3419 26.7686C68.3419 27.8309 68.5386 28.8244 68.932 29.749C69.3255 30.6736 69.8665 31.49 70.555 32.1983C71.2436 32.8868 72.0305 33.4278 72.9157 33.8213C73.8207 34.2147 74.7748 34.4114 75.7781 34.4114C76.7814 34.4114 77.7257 34.2147 78.611 33.8213C79.5159 33.4278 80.3028 32.8868 80.9717 32.1983C81.6406 31.49 82.1619 30.6736 82.5357 29.749C82.9291 28.8244 83.1258 27.8309 83.1258 26.7686C83.1258 25.7063 82.9291 24.7227 82.5357 23.8177C82.1619 22.8931 81.6406 22.0865 80.9717 21.398C80.3028 20.7094 79.5159 20.1783 78.611 19.8045C77.7257 19.411 76.7814 19.2143 75.7781 19.2143Z"/>
+                    <path d="M15.9176 0.561644C23.1564 -2.43677 33.8862 6.86915 39.8831 21.3467C45.8799 35.8244 44.873 49.9919 37.6342 52.9904L37.4641 53.0585C30.3421 55.7993 19.9523 46.8589 13.9535 32.8803L13.6687 32.2053C7.67188 17.7277 8.6788 3.56014 15.9176 0.561644ZM27.4367 5.47278C23.2272 1.82191 19.3162 0.690046 16.4607 1.87283C13.6052 3.05566 11.6403 6.62141 11.2453 12.1795C10.857 17.6429 12.0475 24.5827 14.9799 31.6622C17.9123 38.7417 21.9778 44.4905 26.1156 48.0792C30.3249 51.73 34.2356 52.8623 37.0911 51.6797C39.9466 50.4969 41.912 46.9306 42.307 41.3725C42.6953 35.9091 41.5048 28.9692 38.5724 21.8898C35.64 14.8104 31.5745 9.06149 27.4367 5.47278Z"/>
+                    <path d="M21.3466 13.6687C35.8242 7.67193 49.9917 8.67889 52.9903 15.9176C55.9887 23.1564 46.6828 33.8862 32.2052 39.8831L31.5269 40.1591C17.2876 45.847 3.51316 44.76 0.56158 37.6342C-2.43662 30.3954 6.86914 19.6656 21.3466 13.6687ZM41.3725 11.2453C35.909 10.8571 28.9691 12.0475 21.8897 14.9799C14.8103 17.9123 9.06141 21.9778 5.47272 26.1156C1.82193 30.325 0.690093 34.2357 1.87277 37.0911C3.05556 39.9466 6.62128 41.9121 12.1794 42.3071C17.6428 42.6953 24.5827 41.5048 31.6621 38.5725C38.7415 35.6401 44.4904 31.5745 48.0791 27.4368C51.73 23.2273 52.8624 19.3162 51.6796 16.4607C50.4969 13.6052 46.9306 11.6403 41.3725 11.2453Z"/>
+                    <path d="M13.6687 21.3467C19.6655 6.8692 30.3954 -2.43656 37.6342 0.561641C44.873 3.56007 45.8799 17.7276 39.883 32.2053L39.5987 32.8803C33.6 46.8589 23.2101 55.799 16.0882 53.0585L15.9175 52.9903C8.67883 49.9918 7.67187 35.8243 13.6687 21.3467ZM37.0911 1.87283C34.2356 0.690154 30.325 1.822 26.1156 5.47278C21.9778 9.06147 17.9123 14.8104 14.9799 21.8898C12.0475 28.9692 10.857 35.9091 11.2453 41.3725C11.6403 46.9306 13.6051 50.4969 16.4606 51.6797C19.3161 52.8625 23.2273 51.7301 27.4367 48.0792C31.5745 44.4905 35.64 38.7416 38.5724 31.6622C41.5048 24.5828 42.6953 17.6429 42.307 12.1795C41.912 6.62135 39.9466 3.05562 37.0911 1.87283Z"/>
+                    <path d="M0.561644 15.9175C3.56015 8.67874 17.7277 7.67182 32.2053 13.6686C46.6829 19.6655 55.9886 30.3953 52.9904 37.6341L52.9178 37.8026C49.7703 44.8883 35.7113 45.833 21.3467 39.883C6.86915 33.8861 -2.43677 23.1563 0.561644 15.9175ZM31.6622 14.9798C24.5827 12.0474 17.6429 10.8569 12.1795 11.2452C6.62141 11.6402 3.05566 13.6051 1.87283 16.4606C0.690046 19.3161 1.82191 23.2272 5.47278 27.4367C9.06149 31.5744 14.8104 35.64 21.8898 38.5724C28.9692 41.5047 35.9091 42.6952 41.3725 42.307C46.9306 41.912 50.4969 39.9465 51.6797 37.091C52.8623 34.2356 51.73 30.3248 48.0792 26.1155C44.4905 21.9777 38.7417 17.9122 31.6622 14.9798Z"/>
+                    <path d="M23.7162 22.4721C23.7144 21.3511 25.0706 20.7893 25.8621 21.5833C26.353 22.0757 27.1505 22.0757 27.6414 21.5833C28.4329 20.7893 29.789 21.3511 29.7873 22.4721C29.7862 23.1675 30.3501 23.7314 31.0455 23.7303C32.1665 23.7286 32.7283 25.0847 31.9343 25.8762C31.4419 26.3671 31.4419 27.1647 31.9343 27.6556C32.7283 28.447 32.1665 29.8032 31.0455 29.8014C30.3501 29.8004 29.7862 30.3643 29.7873 31.0596C29.789 32.1807 28.4329 32.7424 27.6414 31.9485C27.1505 31.456 26.353 31.456 25.8621 31.9485C25.0706 32.7424 23.7144 32.1807 23.7162 31.0596C23.7172 30.3643 23.1533 29.8004 22.458 29.8014C21.3369 29.8032 20.7752 28.447 21.5691 27.6556C22.0616 27.1647 22.0616 26.3671 21.5691 25.8762C20.7752 25.0847 21.3369 23.7286 22.458 23.7303C23.1533 23.7314 23.7172 23.1675 23.7162 22.4721Z"/>
+                </svg>
+            </a>
 
-    <div class="paper-card">
-        <h2>Latest Publication</h2>
-        <h3>Non-Singular Bouncing Cosmology from Hyperbolic Field Space Geometry</h3>
-        <p><strong>Abstract:</strong> We investigate a two-field cosmological model in a closed (k=+1) universe where the field space is endowed with a hyperbolic geometry. We demonstrate that the curvature of the field space introduces a kinetic coupling that exponentially suppresses the scalar field kinetic energy, allowing the spatial curvature to dominate and trigger a non-singular bounce.</p>
-        
-        <p><em>Status: Submitted to arXiv [gr-qc] (awaiting moderation). Code archived at CERN/Zenodo (<a href="https://zenodo.org/records/17684434" target="_blank" style="color: #0366d6; text-decoration: none;">DOI: 10.5281/zenodo.17684434</a>).</em></p>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                    <path d="M 14.984375 0.98632812 A 1.0001 1.0001 0 0 0 14 2 L 14 5 A 1.0001 1.0001 0 1 0 16 5 L 16 2 A 1.0001 1.0001 0 0 0 14.984375 0.98632812 z M 5.796875 4.7988281 A 1.0001 1.0001 0 0 0 5.1015625 6.515625 L 7.2226562 8.6367188 A 1.0001 1.0001 0 1 0 8.6367188 7.2226562 L 6.515625 5.1015625 A 1.0001 1.0001 0 0 0 5.796875 4.7988281 z M 24.171875 4.7988281 A 1.0001 1.0001 0 0 0 23.484375 5.1015625 L 21.363281 7.2226562 A 1.0001 1.0001 0 1 0 22.777344 8.6367188 L 24.898438 6.515625 A 1.0001 1.0001 0 0 0 24.171875 4.7988281 z M 15 8 A 7 7 0 0 0 8 15 A 7 7 0 0 0 15 22 A 7 7 0 0 0 22 15 A 7 7 0 0 0 15 8 z M 2 14 A 1.0001 1.0001 0 1 0 2 16 L 5 16 A 1.0001 1.0001 0 1 0 5 14 L 2 14 z M 25 14 A 1.0001 1.0001 0 1 0 25 16 L 28 16 A 1.0001 1.0001 0 1 0 28 14 L 25 14 z M 7.9101562 21.060547 A 1.0001 1.0001 0 0 0 7.2226562 21.363281 L 5.1015625 23.484375 A 1.0001 1.0001 0 1 0 6.515625 24.898438 L 8.6367188 22.777344 A 1.0001 1.0001 0 0 0 7.9101562 21.060547 z M 22.060547 21.060547 A 1.0001 1.0001 0 0 0 21.363281 22.777344 L 23.484375 24.898438 A 1.0001 1.0001 0 1 0 24.898438 23.484375 L 22.777344 21.363281 A 1.0001 1.0001 0 0 0 22.060547 21.060547 z M 14.984375 23.986328 A 1.0001 1.0001 0 0 0 14 25 L 14 28 A 1.0001 1.0001 0 1 0 16 28 L 16 25 A 1.0001 1.0001 0 0 0 14.984375 23.986328 z"/>
+                </svg>
+                <svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                    <path d="M22,21c-6.627,0-12-5.373-12-12c0-1.95,0.475-3.785,1.3-5.412C6.485,5.148,3,9.665,3,15c0,6.627,5.373,12,12,12 c4.678,0,8.72-2.682,10.7-6.588C24.534,20.79,23.292,21,22,21z"/>
+                </svg>
+            </button>
+        </header>
 
-        <div style="margin-top: 20px;">
-            <a href="https://github.com/OkMathOrg/bouncing-cosmology/blob/main/Bouncing_Cosmology_by_Oleksandr_Kravchenko_OkMathOrg.pdf" class="btn">Read the Paper (PDF)</a>
-            <a href="https://github.com/OkMathOrg/bouncing-cosmology" class="btn btn-secondary">View Simulation Code</a>
+        <div class="intro-text">
+            <strong>OkMath</strong> is a research organization dedicated to solving the initial singularity problem through rigorous mathematical frameworks. We explore the intersection of hyperbolic geometry, general relativity, and quantum foundations.
         </div>
+
+        <div class="paper-card">
+            <h3>Non-Singular Bouncing Cosmology from Hyperbolic Field Space Geometry</h3>
+            <div class="abstract-box">
+                <strong>Abstract:</strong> We investigate a two-field cosmological model in a closed (k=+1) universe where the field space is endowed with a hyperbolic geometry. We demonstrate that the curvature of the field space introduces a kinetic coupling that exponentially suppresses the scalar field kinetic energy, allowing the spatial curvature to dominate and trigger a non-singular bounce.
+            </div>
+            
+            <div class="meta-info">
+                <em>Status: Submitted to arXiv [gr-qc] (awaiting moderation). <a href="https://doi.org/10.5281/zenodo.17684434" target="_blank" class="doi-link">DOI: 10.5281/zenodo.17684434</a>.</em>
+            </div>
+
+            <div class="buttons-container">
+                <a href="https://github.com/OkMathOrg/bouncing-cosmology/blob/main/Bouncing_Cosmology_by_Oleksandr_Kravchenko_OkMathOrg.pdf" class="btn btn-primary">Read the Paper (PDF)</a>
+                <a href="https://github.com/OkMathOrg/bouncing-cosmology" class="btn btn-secondary">View Simulation Code</a>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2025 OkMath Organization
+        </footer>
     </div>
 
-    <hr style="margin-top: 50px; border: 0; border-top: 1px solid #eaecef;">
-    <p style="font-size: 0.9rem; color: #586069;">&copy; 2025 OkMath Organization. <a href="https://github.com/OkMathOrg">GitHub</a></p>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        const getPreferredTheme = () => {
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                return storedTheme;
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+
+        const setTheme = (theme) => {
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        };
+
+        setTheme(getPreferredTheme());
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+    </script>
 </body>
 </html>

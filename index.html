@@ -228,6 +228,24 @@
             border-top: 1px solid var(--border);
             padding-top: 20px;
             transition: border-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            display: block;
+            width: 32px;
+            height: 15px;
+        }
+
+        .footer-logo path {
+            fill: var(--text-muted); 
+            transition: fill 0.3s ease;
+        }
+
+        footer a:hover .footer-logo path {
+            fill: var(--icon-color);
         }
     </style>
 </head>
@@ -298,7 +316,14 @@
         </div>
 
         <footer>
-            &copy; 2025 OkMath Research Initiative
+            <span>&copy; 2025 OkMath Research Initiative</span>
+            
+            <a href="https://uponcode.com" aria-label="OkMath Home">
+                <svg class="footer-logo" width="32" height="15" viewBox="0 0 32 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M32.0029 2.90967H20.3662V11.6372H32.0029V14.5464H17.457V2.90967H20.3662V0.000488281H32.0029V2.90967Z"/>
+                    <path d="M2.90918 -1.27164e-07L2.90918 11.6367L11.6367 11.6367L11.6367 -5.08658e-07L14.5459 -6.35821e-07L14.5459 14.5459L2.90918 14.5459L2.90918 11.6367L-1.27164e-07 11.6367L-6.35821e-07 0L2.90918 -1.27164e-07Z"/>
+                </svg>
+            </a>
         </footer>
     </div>
 
